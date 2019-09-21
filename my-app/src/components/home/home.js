@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {  Link } from "react-router-dom";
 import './home.css';
 class Home extends Component {
     constructor(props) {
@@ -10,12 +11,12 @@ class Home extends Component {
 
     render() {
         return (
-            <div>
+            <div id="home-wrap">
             <div id="menu">
                 <div className="overlay">
                     <h1>CoderS nihonGo</h1>
                     <ul id="list">
-                        <li className="item"><span><img src="http://pngimg.com/uploads/katana/katana_PNG14.png" alt="sword"/></span>Go training</li>
+                        <Link id="link-wrap" to="/gotraining"><li className="item"><span><img src="http://pngimg.com/uploads/katana/katana_PNG14.png" alt="sword"/></span>Go training</li> </Link>
                         <li className="item"><span><img src="http://pngimg.com/uploads/katana/katana_PNG14.png" alt="sword"/></span>Guide</li>
                         <li className="item"><span><img src="http://pngimg.com/uploads/katana/katana_PNG14.png" alt="sword"/></span>Contact</li>
                         {/* <li className="item"><span><img src="http://pngimg.com/uploads/katana/katana_PNG14.png"/></span>Contact</li> */}

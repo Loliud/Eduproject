@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css?family=Courgette&display=swap');
+#wrap-training{
+     /* background-image: url('http://www.fullhdwpp.com/wp-content/uploads/streets-of-japan-26_www.FullHDWpp.com_.jpg'); */
+     height: 100vh;
+     /* background-image: url('https://i.pinimg.com/originals/6c/73/41/6c7341f8ceef532c3ecbb7420b6adeb3.jpg'); */
+     /* background-image: url('http://getwallpapers.com/wallpaper/full/3/6/0/655906.jpg'); */
+     background-color: white;
+     background-image: url('https://sotoak.com/wallpapers/japan-world-wallpaper-full-hd-As-Wallpaper-HD.jpg');
+     /* background-image: url('http://sf.co.ua/14/07/wallpaper-2915737.jpg'); */
+     background-size: cover;
+     font-family: 'Courgette', cursive;
+     text-align: center;
+     padding-top: 2rem;
+}
+#wrap-training h1{
+    color: white;
+}
+#form{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+}
+#form #go-name{
+    padding: 3rem;
+    height: 30vh;
+    font-size: 20px;
+    width: 50%;
+   
+}
+#form #go-name #warning-name{
+    margin-top: 3rem;
+    border: 10px solid tomato;
+}
+#form #list-excersises{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+#form #list-excersises #ex-box{
+    margin: 4rem;
+    width: 100%;
+    height: 370px;
+    background: #DDD;
+    padding-bottom: 1rem;
+    animation: 3s box-animation linear;
+    overflow: hidden;
+}
+#form #list-excersises #ex-box  img{
+    height: 100px;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+#form #list-excersises #ex-box h3{
+    margin-bottom: 1rem;
+}
+
+#form #list-excersises #ex-box input{
+    width: 100%;
+    outline: none;
+    background: transparent;
+
+}
+@keyframes box-animation{
+    from{
+        height: 0px;
+    }
+    to{
+        height: 370px;
+    }
+}

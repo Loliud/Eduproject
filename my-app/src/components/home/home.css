@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Courgette&display=swap');
-body, html{
+#home-wrap{
     /* background-image: url('http://www.fullhdwpp.com/wp-content/uploads/streets-of-japan-26_www.FullHDWpp.com_.jpg'); */
+    height: 100vh;
     background-image: url('https://i.pinimg.com/originals/6c/73/41/6c7341f8ceef532c3ecbb7420b6adeb3.jpg');
     /* background-image: url('http://getwallpapers.com/wallpaper/full/3/6/0/655906.jpg'); */
     /* background-image: url('https://sotoak.com/wallpapers/japan-world-wallpaper-full-hd-As-Wallpaper-HD.jpg'); */
@@ -40,6 +41,11 @@ body, html{
     user-select: none;
     cursor: pointer;
     position: relative;
+  }
+  
+  #link-wrap{
+      color: white;
+      text-decoration: none;
   }
   #menu #list .item:hover img{
     transform: rotate(360deg);
