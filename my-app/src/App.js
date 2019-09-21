@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
+import Home from './components/home/home.js';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class  App extends Component {
+ render(){
+   return (
+     <div>
+       <div id="menu">
+         <div className="overlay">
+         <h1>Coders.thoidai</h1>
+         <ul id="list">
+           <li className="item"><span><img src="http://pngimg.com/uploads/katana/katana_PNG14.png"/></span>Go training</li>
+           <li className="item"><span><img src="http://pngimg.com/uploads/katana/katana_PNG14.png"/></span>Guide</li>
+           <li className="item"><span><img src="http://pngimg.com/uploads/katana/katana_PNG14.png"/></span>Contact</li>
+           {/* <li className="item"><span><img src="http://pngimg.com/uploads/katana/katana_PNG14.png"/></span>Contact</li> */}
+           {/* <li className="item"><span><i className="fas fa-arrow-right"></i></span>Contact</li> */}
+         </ul>
+         </div>
+       </div>
+       <Home/>
+     </div>
+   )
+ }
 }
 
 export default App;
