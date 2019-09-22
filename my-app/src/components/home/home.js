@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {  Link } from "react-router-dom";
+import {connect} from 'react-redux';
 
 import './home.css';
 class Home extends Component {
@@ -35,6 +36,12 @@ class Home extends Component {
     }
 }
 
+const mapStateToProps = (state) =>{
+    console.log(state);
+    return{
 
-export default Home;
+    }
+}
+
+export default connect(mapStateToProps)(Home);
 

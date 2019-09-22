@@ -1,0 +1,3 @@
+export const GET_CHAPTERS = 'GET_CHAPTERS';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAILED = 'LOGIN_FAILED';

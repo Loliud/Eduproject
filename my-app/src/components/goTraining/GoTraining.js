@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, Badge, Button, Spinner } from 'reactstrap';
+import {connect} from 'react-redux';
+import *as actions from '../../actions/actions';
+import {firestoreConnect} from 'react-redux-firebase';
+import {compose} from 'redux';
 import axios from 'axios';
 import './gotraining.css';
 
@@ -48,12 +52,7 @@ class GoTraining extends Component {
     }
 
     componentDidMount(){
-        axios.get('https://5d3029eb28465b00146aaca5.mockapi.io/api/chapterEdu').then(res =>{
-            console.log(res.data);
-            this.setState({
-                arrayDocs: res.data
-            })
-        })
+        this.props.fetchChapters();
         asyncLoading().then(() =>{
             this.setState({
                 loading: false
@@ -64,6 +63,7 @@ class GoTraining extends Component {
 
     render() {
         const {loading} = this.state;
+        const {arrayDocs} = this.props;
         if(loading){
             return (
                 <div id="loading-train">
@@ -71,7 +71,6 @@ class GoTraining extends Component {
                 </div>
             )
         }
-        const {arrayDocs} = this.state;
         return (
             <div id="wrap-training">
                 <Link to="/"><button id="go-back-home">Go back</button></Link>
@@ -103,5 +102,23 @@ var asyncLoading = () =>{
         }, 500)
     });
 }
+const mapStateToProps = (state) =>{
+    console.log(state);
+    return {
+        arrayDocs: state.chapters
+    }
+}
 
-export default GoTraining;
+const mapDispatchToProps = (dispatch, props) =>{
+        return {
+            fetchChapters : () => dispatch(actions.fetchChapter())
+        }
+}
+
+export default 
+    compose(
+        connect(mapStateToProps, mapDispatchToProps),
+        firestoreConnect([
+            {collection: 'appUsers'}
+        ])
+)(GoTraining);
