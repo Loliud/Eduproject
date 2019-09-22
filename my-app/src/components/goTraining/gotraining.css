@@ -8,19 +8,37 @@
     /* background-image: url('http://sf.co.ua/14/07/wallpaper-2915737.jpg'); */
     background-size: contain;
 }
+#wrap-training #navbar{
+    position: fixed;
+    width: 20%;
+    top: 13%;
+    left: 10%;
+    z-index: 1;
+    font-size: 14px;
+    background-color: #DDD;
+    padding: 1rem 0rem;
+}
+
+#wrap-training #fake{
+    opacity: 0;
+}
 #wrap-training #list-item a{
     text-decoration: none;
     list-style: none;
+    color: black;
+    transition: 0.3s;
+}
+#wrap-training #list-item a:hover{
+    color: tomato;
 }
 #wrap-training #wrap-content{
     width: 80%;
     margin: auto;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    margin-top: 8rem;
-    background-color: white;
+    margin-top: 1rem;
 }
-#wrap-training #go-back-home{
-    
+#wrap-training #wrap-content #content{
+    /* text-align: center; */
+    background-color: white;
 }
 #wrap-training h1{
     margin-top: 2rem;
@@ -46,4 +64,11 @@
       display: flex;
       justify-content: center;
       align-items: center;
+}
+
+@media (max-height: 900px){
+    #wrap-training #navbar{
+        top: 15%;
+        font-size: 12px;
+    }
 }
