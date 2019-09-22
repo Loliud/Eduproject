@@ -8,7 +8,11 @@ class SignUp extends Component{
     constructor(props){
         super(props);
         this.state ={
-            loading: true
+            loading: true,
+            email: '',
+            password: '',
+            firstName: '',
+            lastName: ''
         }
     }
     componentDidMount() {
@@ -16,8 +20,21 @@ class SignUp extends Component{
         demoAsyncCall().then(() => this.setState({ loading: false }));
       }
 
+    onSubmit = (event) =>{
+        event.preventDefault();
+        console.log(this.state);
+    }
+    onChange = (event) =>{
+        const name = event.target.name;
+        const value = event.target.value;
+        this.setState({
+            [name]: value
+        });
+    }
+
 
     render(){
+        const {email, firstName, lastName} = this.state;
         const { loading } = this.state;
         if(loading) { // if your component doesn't have to wait for an async action, remove this block 
         return <div className="loading"><Spinner style={{ width: '8rem', height: '8rem', color:"tomato" }} /></div>; // render null when app is not ready
@@ -26,22 +43,22 @@ class SignUp extends Component{
         return (
             <div id="wrap-auth">
             <div id="overlay">
-            <Form id="box-form">
+            <Form id="box-form" onSubmit={this.onSubmit}>
                 <FormGroup>
                     <Label for="email">Email</Label>
-                    <Input type="email" name="email" id="email"  required/>
+                    <Input type="email" name="email" id="email" value={email} onChange={this.onChange} required/>
                 </FormGroup>        
                 <FormGroup>
                     <Label for="examplePassword">Password</Label>
-                    <Input type="password" name="password" id="examplePassword" required/>
+                    <Input type="password" name="password" id="examplePassword" onChange={this.onChange} required/>
                 </FormGroup>
                 <FormGroup>
-                    <Label for="Username">First name</Label>
-                    <Input type="text" name="userName" id="Username"  required/>
+                    <Label for="FirstName">First name</Label>
+                    <Input type="text" name="firstName" id="FirstName" value={firstName} onChange={this.onChange} required/>
                 </FormGroup>
                 <FormGroup>
-                    <Label for="Username">Last name</Label>
-                    <Input type="text" name="userName" id="Username"  required/>
+                    <Label for="LastName">Last name</Label>
+                    <Input type="text" name="lastName" id="LastName" value={lastName}  onChange={this.onChange} required/>
                 </FormGroup>
                 <button  color="danger">SIGN UP</button>
             </Form>
@@ -51,7 +68,7 @@ class SignUp extends Component{
     }
 }
 function demoAsyncCall() {
-    return new Promise((resolve) => setTimeout(() => resolve(), 2500));
+    return new Promise((resolve) => setTimeout(() => resolve(), 500));
   }
 
 export default SignUp;

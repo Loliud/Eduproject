@@ -4,6 +4,7 @@ import GoTraining from './components/goTraining/GoTraining';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import SignIn from './components/auth/signIn';
 import SignUp from './components/auth/signUp';
+import Chapter from './components/goTraining/chapter/Chapter';
 import './App.css';
 
 class App extends Component {
@@ -14,6 +15,7 @@ class App extends Component {
           <Route path="/gotraining" component={GoTraining} />
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
+          <Route path="/excersise" component={Chapter} />
       </Router>
     )
   }
