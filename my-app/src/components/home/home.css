@@ -109,7 +109,56 @@
   }
 
 
-  /*  */
+  /* button */
+  #home-wrap #auth{
+    position: fixed;
+    top: 1%;
+    right: 5%;
+  }
+  #home-wrap #auth button{
+    padding: 10px 20px;
+    margin: 0.2rem;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    font-family: sans-serif;
+    font-weight: bold;
+  
+  
+  }
+  #home-wrap #auth .wrap-button button{
+    position: relative;
+    transition: 0.6s;
+  }
+  #home-wrap #auth .wrap-button img{
+    position: absolute;
+    height: 50px;
+    transform: rotate(-30deg) translate(-60%);
+    left: 50%;
+    top: 140%;
+    animation: 1s button-animation infinite linear;
+  }
+ 
+  #home-wrap #auth button:hover{
+    background: #e8fde1;
+  }
+  @keyframes button-animation{
+    0%{
+      top: 140%;
+    }
+    25%{
+      top: 80%;
+    }
+    50%{
+      top: 60%
+    }
+    75%{
+      top: 80%;
+    }
+    100%{
+      top: 140%;
+    }
 
+  }
 
   

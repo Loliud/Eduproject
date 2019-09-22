@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {  Link } from "react-router-dom";
+
 import './home.css';
 class Home extends Component {
     constructor(props) {
@@ -25,9 +26,9 @@ class Home extends Component {
                 </div>
               
             </div>
-            <div id="water">
-            <div class="animate drop"></div>
-            <div class="animate wave"></div>
+            <div id="auth">
+                <Link className="wrap-button" to="/signin"><button color="primary" id="sign-in">Sign In<span><img src="http://pngimg.com/uploads/katana/katana_PNG17.png" alt="katana"/></span></button></Link>
+                <Link className="wrap-button" to="/signup"><button color="warning" id="sign-up">Sign Up<span><img src="http://pngimg.com/uploads/katana/katana_PNG17.png" alt="katana" /></span></button></Link>
             </div>
             </div>
         )

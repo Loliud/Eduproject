@@ -41,10 +41,10 @@
 #form #list-excersises #ex-box{
     margin: 4rem;
     width: 100%;
-    height: 370px;
+    height: 430px;
     background: #DDD;
     padding-bottom: 1rem;
-    animation: 3s box-animation linear;
+    animation: 2s box-animation linear;
     overflow: hidden;
 }
 #form #list-excersises #ex-box  img{
@@ -67,6 +67,20 @@
         height: 0px;
     }
     to{
-        height: 370px;
+        height: 430px;
     }
+}
+
+
+#loading-train{
+      /* background-image: url('http://www.fullhdwpp.com/wp-content/uploads/streets-of-japan-26_www.FullHDWpp.com_.jpg'); */
+      height: 100vh;
+      background-image: url('https://i.pinimg.com/originals/6c/73/41/6c7341f8ceef532c3ecbb7420b6adeb3.jpg');
+      /* background-image: url('http://getwallpapers.com/wallpaper/full/3/6/0/655906.jpg'); *
+      /* background-image: url('https://sotoak.com/wallpapers/japan-world-wallpaper-full-hd-As-Wallpaper-HD.jpg'); */
+      /* background-image: url('http://sf.co.ua/14/07/wallpaper-2915737.jpg'); */
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 }
