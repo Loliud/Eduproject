@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import *as actions from '../../actions/actions';
 import {firestoreConnect} from 'react-redux-firebase';
 import {compose} from 'redux';
-import axios from 'axios';
+import {Redirect} from 'react-router-dom';
 import './gotraining.css';
 
 
@@ -63,7 +63,8 @@ class GoTraining extends Component {
 
     render() {
         const {loading} = this.state;
-        const {arrayDocs} = this.props;
+        const {arrayDocs, auth} = this.props;
+        if(!auth.uid) return <Redirect to="/signin"/>
         if(loading){
             return (
                 <div id="loading-train">
@@ -101,9 +102,10 @@ var asyncLoading = () =>{
     });
 }
 const mapStateToProps = (state) =>{
-    console.log(state);
+    // console.log(state);
     return {
-        arrayDocs: state.chapters
+        arrayDocs: state.chapters,
+        auth: state.firebase.auth
     }
 }
 

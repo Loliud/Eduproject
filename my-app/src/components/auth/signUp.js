@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import { FormGroup, Label, Input, Form, Spinner } from 'reactstrap';
 import './style.css';
+import {connect} from 'react-redux';
+import {Redirect} from 'react-router-dom';
+import *as actions from '../../actions/actions';
 
 
 
@@ -11,8 +14,7 @@ class SignUp extends Component{
             loading: true,
             email: '',
             password: '',
-            firstName: '',
-            lastName: ''
+            name: '',
         }
     }
     componentDidMount() {
@@ -22,7 +24,12 @@ class SignUp extends Component{
 
     onSubmit = (event) =>{
         event.preventDefault();
-        console.log(this.state);
+        const newUser = {
+            email: this.state.email,
+            password: this.state.password,
+            name: this.state.name
+        };
+        this.props.goSignUp(newUser);
     }
     onChange = (event) =>{
         const name = event.target.name;
@@ -34,8 +41,12 @@ class SignUp extends Component{
 
 
     render(){
-        const {email, firstName, lastName} = this.state;
+        const {email, name} = this.state;
         const { loading } = this.state;
+        const {auth} = this.props;
+        if(auth.uid) return <Redirect to="/"/>
+
+        
         if(loading) { // if your component doesn't have to wait for an async action, remove this block 
         return <div className="loading"><Spinner style={{ width: '8rem', height: '8rem', color:"tomato" }} /></div>; // render null when app is not ready
         }
@@ -53,12 +64,8 @@ class SignUp extends Component{
                     <Input type="password" name="password" id="examplePassword" onChange={this.onChange} required/>
                 </FormGroup>
                 <FormGroup>
-                    <Label for="FirstName">First name</Label>
-                    <Input type="text" name="firstName" id="FirstName" value={firstName} onChange={this.onChange} required/>
-                </FormGroup>
-                <FormGroup>
-                    <Label for="LastName">Last name</Label>
-                    <Input type="text" name="lastName" id="LastName" value={lastName}  onChange={this.onChange} required/>
+                    <Label for="name">Name</Label>
+                    <Input type="text" name="name" id="name" value={name} onChange={this.onChange} required/>
                 </FormGroup>
                 <button  color="danger">SIGN UP</button>
             </Form>
@@ -71,4 +78,19 @@ function demoAsyncCall() {
     return new Promise((resolve) => setTimeout(() => resolve(), 500));
   }
 
-export default SignUp;
+
+const mapStateToProps = (state) =>{
+    return {
+        auth: state.firebase.auth
+    }
+}
+
+const mapDispatchToProps = (dispatch, props) =>{
+    return {
+        goSignUp: (newUser) =>{
+            dispatch(actions.signUp(newUser))
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

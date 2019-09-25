@@ -1,3 +1,5 @@
 export const GET_CHAPTERS = 'GET_CHAPTERS';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILED = 'LOGIN_FAILED';
+export const SIGN_UP_FAILED = 'SIGN_UP_FAILED';
+export const SIGN_SUCCESS = 'SIGN_SUCCESS'

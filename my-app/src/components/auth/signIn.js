@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { FormGroup, Label, Input, Form, Spinner, Alert } from 'reactstrap';
 import { connect } from 'react-redux';
 import *as actions from '../../actions/actions';
+import {Redirect} from 'react-router-dom';
 import './style.css';
 
 
@@ -22,12 +23,11 @@ class SignIn extends Component {
 
     onSubmit = (event) => {
         event.preventDefault();
-        console.log(this.state);
         const credentials = {
             email: this.state.email,
             password: this.state.password
         }
-        this.props.goSignIn(this.state)
+        this.props.goSignIn(credentials);
     }
     onChange = (event) => {
         const name = event.target.name;
@@ -39,10 +39,11 @@ class SignIn extends Component {
 
 
     render() {
-        console.log(this.props.state);
+       
         const {authError} = this.props.state.auth;
-        console.log(authError);
         const { loading, email } = this.state;
+        const {auth} = this.props;
+        if(auth.uid) return <Redirect to="/"/>
         if (loading) { // if your component doesn't have to wait for an async action, remove this block 
             return <div className="loading"><Spinner style={{ width: '8rem', height: '8rem', color: "tomato" }} /></div>; // render null when app is not ready
         }
@@ -77,7 +78,8 @@ function demoAsyncCall() {
 
 const mapStateToProps = (state) => {
     return {
-        state
+        state,
+        auth: state.firebase.auth
     }
 }
 const mapDispatchToProps = (dispatch, props) => {
