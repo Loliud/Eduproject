@@ -44,7 +44,7 @@ class GoTraining extends Component {
                         })
                     }
                     <br/>
-                    <Link to="/excersise"><Button color="danger">Go excersise</Button></Link>
+                    <Link to={`/excersise/${item.id}`}><Button color="danger">Go excersise</Button></Link>
                     
                 </div>
             )

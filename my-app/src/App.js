@@ -15,7 +15,7 @@ class App extends Component {
           <Route path="/gotraining" component={GoTraining} />
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
-          <Route path="/excersise" component={Chapter} />
+          <Route path="/excersise/:id" component={Chapter} />
       </Router>
     )
   }
