@@ -37,9 +37,19 @@ export const signUp = (newUser) =>{
             newUser.email,
             newUser.password
         ).then((res) =>{
+            const stringArray = newUser.name.split(' ');
+            let avar = '';
+
+            if(stringArray.length > 1){
+                console.log(stringArray);
+                 avar = stringArray[stringArray.length - 2][0] + stringArray[stringArray.length - 1][0];
+            }else{
+                 avar = stringArray[0][0];
+            }
+            
             return firestore.collection('appUsers').doc(res.user.uid).set({
                 name: newUser.name,
-                avar: newUser.name[0]
+                avar: avar
             });
         }).then(() =>{
             dispatch({type: types.SIGN_SUCCESS});

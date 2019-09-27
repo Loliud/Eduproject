@@ -7,6 +7,7 @@
     /* background-image: url('https://sotoak.com/wallpapers/japan-world-wallpaper-full-hd-As-Wallpaper-HD.jpg'); */
     /* background-image: url('http://sf.co.ua/14/07/wallpaper-2915737.jpg'); */
     background-size: cover;
+    user-select: none;
 }
 #menu{
     position: fixed;
@@ -85,6 +86,26 @@
     position: absolute;
     top: -10%;
     animation: 10s textAnimate infinite linear;
+  }
+  #home-wrap #avar{
+    position: fixed;
+    top: 2%;
+    right: 2%;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #b95587;
+    border-radius: 100%;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    user-select: none;
+  }
+  #home-wrap #avar h3{
+    margin: 0;
+    padding: 0;
+    color: #DDD;
+    text-transform: uppercase;
   }
  
   @keyframes textAnimate_2{

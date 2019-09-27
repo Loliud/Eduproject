@@ -74,18 +74,17 @@ class GoTraining extends Component {
         }
         return (
             <div id="wrap-training">
-                <Link to="/"><button id="go-back-home">Go back</button></Link>
                 {/* <h1>CoderS nihonGo</h1> */}
-                <Col sm={4} id="navbar">
+                {/* <Col sm={4} id="navbar">
                         <ul id="list-item">
                             {this.arrayToNav(arrayDocs)}                       
                         </ul>
-                </Col>
+                </Col> */}
                 <Row id="wrap-content">
-                    <Col sm={4} id="fake">
+                    {/* <Col sm={4} id="fake">
                         <h1>Ken</h1>
-                    </Col>
-                    <Col sm={8} id="content">
+                    </Col> */}
+                    <Col sm={12} id="content">
                         {this.arrayToBox(arrayDocs)}
                     </Col>
                 </Row>
