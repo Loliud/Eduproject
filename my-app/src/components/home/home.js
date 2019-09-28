@@ -17,8 +17,6 @@ class Home extends Component {
         <Link className="wrap-button" to="/signin"><button color="primary" id="sign-in">Sign In<span><img src="http://pngimg.com/uploads/katana/katana_PNG17.png" alt="katana" /></span></button></Link>
         <Link className="wrap-button" to="/signup"><button color="warning" id="sign-up">Sign Up<span><img src="http://pngimg.com/uploads/katana/katana_PNG17.png" alt="katana" /></span></button></Link>
         </div>) ;
-        console.log(auth);
-        console.log(profile);
         return (
             <div id="home-wrap">
                 <div id="menu">

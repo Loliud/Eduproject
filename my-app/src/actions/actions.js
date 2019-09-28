@@ -6,7 +6,6 @@ export const fetchChapter = () =>{
         .then(res =>{
             // console.log(res.data);
             dispatch({type: types.GET_CHAPTERS, chapters: res.data});
-            console.log(res.data);
         });
     }
 }
@@ -49,7 +48,8 @@ export const signUp = (newUser) =>{
             
             return firestore.collection('appUsers').doc(res.user.uid).set({
                 name: newUser.name,
-                avar: avar
+                avar: avar,
+                excersises: []
             });
         }).then(() =>{
             dispatch({type: types.SIGN_SUCCESS});
@@ -62,9 +62,7 @@ export const signUp = (newUser) =>{
 
 export const submitForm = (excersises, key, profile) =>{
     return (dispatch, getState, {getFirebase, getFirestore}) =>{
-        const firebase = getFirebase();
         const firestore = getFirestore();
-        console.log(key);
         firestore.collection('appUsers').doc(key).set({
             name: profile.name,
             avar: profile.avar,

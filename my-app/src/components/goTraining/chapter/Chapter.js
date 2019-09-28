@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Button } from 'reactstrap';
+import { Button, Spinner } from 'reactstrap';
 import { connect } from 'react-redux';
 import *as actions from '../../../actions/actions';
+import {Redirect} from 'react-router-dom';
 import './style.css';
 
 
@@ -9,6 +10,7 @@ class Chapter extends Component {
     constructor(props){
         super(props);
         this.state ={
+            loading: false,
             ex_1: '',
             ex_2: '',
             ex_3: ''
@@ -18,26 +20,60 @@ class Chapter extends Component {
     }
     componentDidMount(){
         this.props.getChapters();
+        let { id } = this.props.match.params;
+        var currentEx;
+        if(id && this.props.profile.excersises){
+            currentEx = this.props.profile.excersises[id - 1];
+        }
+        this.setState({
+            ...currentEx
+        });
     }
 
     onSubmit = (event) =>{
         event.preventDefault();
-        console.log(this.state);
         let objectLinks = {
             number : this.props.match.params.id,
             ...this.state
         }
         const {auth, profile} = this.props;
-        console.log(profile);
         let excersises = profile.excersises;
-        if(excersises){
+        console.log(excersises);
+
+        if(excersises && excersises.length < 1){
             excersises.push(objectLinks);
         }else{
-            excersises = [];
-            excersises.push(objectLinks)
+           
+                var key = true;
+                for(let i = 0; i < excersises.length; i++){
+                    if(excersises[i].number === objectLinks.number){
+                        excersises[i] = objectLinks;
+                        key = false;
+                        break;
+                    }
+                }
+                if(key){
+                    excersises.push(objectLinks);
+                }
+           
+           
         }
-        
+
+
+
+
         this.props.submitForm(excersises, auth.uid, profile);
+
+        // loading status
+        this.setState({
+            loading: true
+        });
+        // ngung loading
+        ayncLoading().then(res =>{
+            this.setState({
+                loading: false
+            });
+        });
     }
     onChange = (event) =>{
         let name = event.target.name;
@@ -45,6 +81,7 @@ class Chapter extends Component {
         this.setState({
             [name] : value
         });
+      
     }
     formRender = (array) => {
         if(array){
@@ -65,14 +102,25 @@ class Chapter extends Component {
     
 
     render() {
-        const { chapters, match } = this.props;
+        const { chapters, match,auth } = this.props;
+        const {loading} = this.state;
         const { id } = match.params;
         let chapter = chapters.find((chapter) => {
             return chapter.id === id;
         });
-
+        if(!auth.uid){
+            return  <Redirect to="/"/>
+        }
         if(!chapter){
             chapter = [];
+        }
+        if(loading){
+            return (
+                <div id="loading-train">
+                    <h1>Lưu thành công</h1>
+                <Spinner style={{ width: '8rem', height: '8rem', color:"aqua" }} />
+                </div>
+            )
         }
         return (
             <div id="chapter">
@@ -110,6 +158,14 @@ const mapDispatchToProps = (dispatch, props) =>{
         getChapters: () => dispatch(actions.fetchChapter()),
         submitForm: (objectLinks, key, profile) => dispatch(actions.submitForm(objectLinks, key, profile))
     }
+}
+
+const ayncLoading = () =>{
+    return new Promise((resolve, reject) =>{
+        setTimeout(()=>{
+            resolve();
+        }, 800);
+    });
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chapter);
